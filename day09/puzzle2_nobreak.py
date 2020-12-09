@@ -46,9 +46,6 @@ def main(input_file):
                 if not sum_of_two(number_under_test, window):
                     invalid_number = number_under_test
                     logging.debug("Invalid number {} found.".format(invalid_number))
-                    break # We don't have to consider any numbers past this point, nor this number
-                    # TODO: Confirm this is valid. It worked but i'm not sure if this is true
-                    # Confirmed invalid assumption. Consider the malicious example 1,2,3,13,8,... with preamble 3
 
             numbers.append(number_under_test)
 
@@ -57,7 +54,7 @@ def main(input_file):
     found_range = None
     for i in range(len(numbers)):
         range_sum = 0
-        end = i + 2 # At least 2 numbers in the contiguous range
+        end = i + 2
         while range_sum < invalid_number and end < len(numbers):
             checking = numbers[i:end]
             range_sum = sum(checking)
